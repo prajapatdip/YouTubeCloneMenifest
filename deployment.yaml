@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: youtube
+      type: frontend
+  template:
+    metadata:
+      name: my-pod
+      labels:
+        app: youtube
+        type: frontend
+    spec:
+      containers:
+      - name: youtube-clone
+        image: prajapatdip/youtube:latest
+        ports:
+        - containerPort: 3000
